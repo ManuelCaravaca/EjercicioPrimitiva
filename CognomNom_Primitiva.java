@@ -9,7 +9,7 @@ import java.util.Scanner;
 //TODO: Fer refractor per canviar el nom de la classe
 public class CognomNom_Primitiva {
     /**
-     * Mètode main executable
+     * Mètode main executablea
      * @param args
      * @since 1.0
      */
@@ -149,4 +149,6 @@ public class CognomNom_Primitiva {
         return x;
     }
 
+    /** Patata **/
+    /** manuuuuunskasdew*/
 }
