@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Programa de simulació de La Primitiva
@@ -155,5 +157,55 @@ public class CognomNom_Primitiva {
 
         return x;
     }
+
+    public static int[] calcularCombinacion() {
+        int[] combinacionGanadora = new int[6];
+
+        // Generamos combinación ganadora
+        for (int i = 0; i < 6; i++) {
+            int numeroAleatorio;
+            do {
+                // Generar un numero aleatorio
+                numeroAleatorio = new Random().nextInt(49) + 1;
+            } while (contieneNumero(combinacionGanadora, numeroAleatorio)); // Evitaremos duplicats
+            combinacionGanadora[i] = numeroAleatorio;
+        }
+
+        // Obtenir numero aleatorio (entre 0 y 9)
+        int reintegro = new Random().nextInt(10);
+
+        // Combinamos resultados en el array
+        int[] combinacionFinal = Arrays.copyOf(combinacionGanadora, 7);
+        combinacionFinal[6] = reintegro;
+
+        return combinacionFinal;
+    }
+
+    // Metodo para verificar los numeros en el array
+    public static boolean contieneNumero(int[] array, int numero) {
+        for (int i : array) {
+            if (i == numero) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Método para imprimir contenido
+    public static String arrayToString(int[] array) {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
+
+
+
+
 
