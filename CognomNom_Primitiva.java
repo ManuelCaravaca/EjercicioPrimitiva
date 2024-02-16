@@ -149,6 +149,6 @@ public class CognomNom_Primitiva {
         return x;
     }
 
-    /** Patata **/
+    /** Patataaaaa **/
     /** manuuuuunskasdew*/
 }
