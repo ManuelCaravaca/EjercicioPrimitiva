@@ -156,4 +156,4 @@ public class CognomNom_Primitiva {
         return x;
     }
 }
-        /*TUS  MUERTOS*/
+      /*HOLA CHICOS/*
