@@ -39,22 +39,71 @@ public class CognomNom_Primitiva {
         }
 
         premi = comprovarEncerts(aposta, combinacioGuanyadora);
-        System.out.println("El teu premi és: "+premi+" €");
+        System.out.println("El teu premi és: " + premi + " €");
     }
 
     /**
      * //TODO: Completasr
+     *
      * @return //TODO: Completar
      * @since 1.0
      */
-    private static int[] introduirAposta(){
+    private static int[] introduirAposta() {
         System.out.println("Introdueix la teva aposta: ");
         int[] aposta = null;
+        int[] numeros = new int[6];
+        Scanner scanner = new Scanner(System.in);
 
-        //TODO: Fer el codi del mètode
+        System.out.println("Ingrese 6 números del 1 al 49:");
 
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            String input = scanner.nextLine();
+
+            if (esNumeroValido(input)) {
+                int numero = Integer.parseInt(input);
+
+                if (numero >= 1 && numero <= 49 && !contieneNumero(numeros, numero)) {
+                    numeros[i] = numero;
+                } else {
+                    System.out.println("Por favor, ingrese un número válido entre 1 y 49 que no haya sido ingresado previamente.");
+                    i--;  // Decrementa el índice para permitir ingresar el número nuevamente.
+                }
+            } else {
+                System.out.println("Por favor, ingrese un número entero válido.");
+                i--;  // Decrementa el índice para permitir ingresar el número nuevamente.
+            }
+        }
+
+        System.out.print("Los números ingresados son: ");
+        for (int num : numeros) {
+            System.out.print(num + " ");
+        }
         return aposta;
     }
+
+    private static boolean contieneNumero(int[] array, int numero) {
+        for (int num : array) {
+            if (num == numero) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean esNumeroValido(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+
+        }
+          }
+
+
+
+
 
     /**
      * //TODO: Completar
@@ -148,5 +197,5 @@ public class CognomNom_Primitiva {
 
         return x;
     }
-        /*HOLA*/
+
 }
