@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Programa de simulació de La Primitiva
@@ -9,7 +11,12 @@ import java.util.Scanner;
 //TODO: Fer refractor per canviar el nom de la classe
 public class CognomNom_Primitiva {
     /**
+<<<<<<< HEAD
      * Mètode main executablea
+=======
+     * Mètode main executable
+     *
+>>>>>>> mireia
      * @param args
      * @since 1.0
      */
@@ -19,9 +26,10 @@ public class CognomNom_Primitiva {
 
     /**
      * //TODO: Completar
+     *
      * @since 1.0
      */
-    private static void menuPrincipal(){
+    private static void menuPrincipal() {
         System.out.println("***** PRIMITIVA ******");
 
         int[] aposta = introduirAposta();
@@ -39,15 +47,16 @@ public class CognomNom_Primitiva {
         }
 
         premi = comprovarEncerts(aposta, combinacioGuanyadora);
-        System.out.println("El teu premi és: "+premi+" €");
+        System.out.println("El teu premi és: " + premi + " €");
     }
 
     /**
      * //TODO: Completasr
+     *
      * @return //TODO: Completar
      * @since 1.0
      */
-    private static int[] introduirAposta(){
+    private static int[] introduirAposta() {
         System.out.println("Introdueix la teva aposta: ");
         int[] aposta = null;
 
@@ -58,10 +67,11 @@ public class CognomNom_Primitiva {
 
     /**
      * //TODO: Completar
+     *
      * @return //TODO: Completar
      * @since 1.0
      */
-    private static int[] calcularCombinacioGuanyadora(){
+    private static int[] calcularCombinacioGuanyadora() {
         int[] combinacio = null;
 
         //TODO: Fer el codi del mètode
@@ -71,12 +81,13 @@ public class CognomNom_Primitiva {
 
     /**
      * //TODO: Completar
-     * @param aposta //TODO: Completar
+     *
+     * @param aposta               //TODO: Completar
      * @param combinacioGuanyadora //TODO: Completar
      * @return //TODO: Completar
      * @since 1.0
      */
-    private static int comprovarEncerts(int[] aposta, int[] combinacioGuanyadora){
+    private static int comprovarEncerts(int[] aposta, int[] combinacioGuanyadora) {
         int premi = 0;
         int encerts = 0;
         boolean reintregrament = false;
@@ -95,9 +106,10 @@ public class CognomNom_Primitiva {
 
     /**
      * Aquest mètode llegeix un enter per teclat dins d'un domini determinat
+     *
      * @param missatge parametritzat per a mostrar a l'usuari@
-     * @param min valor min acceptat
-     * @param max valor max acceptat
+     * @param min      valor min acceptat
+     * @param max      valor max acceptat
      * @return retorna un int
      * @since 1.0
      */
@@ -105,50 +117,104 @@ public class CognomNom_Primitiva {
         Scanner llegir = new Scanner(System.in);
         int x = 0;
         boolean valorCorrecte = false;
-        do{
+        do {
             System.out.println(missatge);
             valorCorrecte = llegir.hasNextInt();
-            if (!valorCorrecte){
+            if (!valorCorrecte) {
                 System.out.println("ERROR: Valor no enter.");
                 llegir.nextLine();
-            }else{ // Tinc un enter
+            } else { // Tinc un enter
                 x = llegir.nextInt();
                 llegir.nextLine();
-                if (x < min || x > max){
+                if (x < min || x > max) {
                     System.out.println("Opció no vàlida");
                     valorCorrecte = false;
                 }
             }
-        }while(!valorCorrecte);
+        } while (!valorCorrecte);
 
         return x;
     }
 
     /**
      * Aquest mètode serveix per capturar floats des de teclat amb control d'errors
+     *
      * @param missatge
      * @return
      * @since 1.0
      */
-    private static float llegirFloat(String missatge){
+    private static float llegirFloat(String missatge) {
         Scanner llegir = new Scanner(System.in);
         float x = 0;
         boolean valorCorrecte = false;
-        do{
+        do {
             System.out.print(missatge);
             valorCorrecte = llegir.hasNextFloat();
 
-            if (!valorCorrecte){
+            if (!valorCorrecte) {
                 System.out.println("ERROR: Valor no float.");
-            }else{
+            } else {
                 x = llegir.nextFloat();
             }
             llegir.nextLine();
-        }while(!valorCorrecte);
+        } while (!valorCorrecte);
 
         return x;
     }
 
+
     /** Patata **/
     /** manuuuuunskasdew*/
+
+    public static int[] calcularCombinacion() {
+        int[] combinacionGanadora = new int[6];
+
+        // Generamos combinación ganadora
+        for (int i = 0; i < 6; i++) {
+            int numeroAleatorio;
+            do {
+                // Generar un numero aleatorio
+                numeroAleatorio = new Random().nextInt(49) + 1;
+            } while (contieneNumero(combinacionGanadora, numeroAleatorio)); // Evitaremos duplicats
+            combinacionGanadora[i] = numeroAleatorio;
+        }
+
+        // Obtenir numero aleatorio (entre 0 y 9)
+        int reintegro = new Random().nextInt(10);
+
+        // Combinamos resultados en el array
+        int[] combinacionFinal = Arrays.copyOf(combinacionGanadora, 7);
+        combinacionFinal[6] = reintegro;
+
+        return combinacionFinal;
+    }
+
+    // Metodo para verificar los numeros en el array
+    public static boolean contieneNumero(int[] array, int numero) {
+        for (int i : array) {
+            if (i == numero) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Método para imprimir contenido
+    public static String arrayToString(int[] array) {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
+
+
+
+
+
